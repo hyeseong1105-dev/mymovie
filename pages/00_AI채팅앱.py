@@ -54,5 +54,5 @@ if user_input:
                 for chunk in stream if chunk.choices
             )
             st.session_state.messages.append({"role": "assistant", "content": answer})
-        except Exception:
-            st.error("응답을 받지 못했습니다. 잠시 후 다시 보내 주세요.")
+        except Exception as e:
+            st.error(f"에러: {e}")
