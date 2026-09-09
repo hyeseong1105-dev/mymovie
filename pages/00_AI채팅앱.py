@@ -45,7 +45,7 @@ if user_input:
     with st.chat_message("assistant"):
         try:
             stream = client.chat.completions.create(
-                model="gemini-3.6-flash",
+                model="gemini-3.8-flash",
                 messages=payload,
                 stream=True,
             )
