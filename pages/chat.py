@@ -4,7 +4,7 @@ from openai import OpenAI
 # 페이지 기본 설정 (이 파일만의 설정 — main.py에는 영향 없음)
 st.set_page_config(page_title="AI 정보 선생님", page_icon="🤖")
 st.title("🤖 AI 정보 선생님")
-st.write("키 길이:", len(st.secrets.get("GEMINI_API_KEY", "")))
+
 # 비밀 금고(secrets)에서 API 키를 꺼내 접속 준비
 client = OpenAI(
     api_key=st.secrets["GEMINI_API_KEY"],
@@ -50,5 +50,5 @@ if user_input:
             )
             # AI 답도 기록에 저장 (다음 질문에 이어서 사용)
             st.session_state.messages.append({"role": "assistant", "content": answer})
-        except Exception:
-            st.error("응답을 받지 못했습니다. 잠시 후 다시 보내 주세요.")
+        except Exception as e:
+            st.error(f"에러: {e}")
