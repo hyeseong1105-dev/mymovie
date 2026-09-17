@@ -4,7 +4,7 @@ from openai import OpenAI
 # 페이지 기본 설정 (이 파일만의 설정 — main.py에는 영향 없음)
 st.set_page_config(page_title="AI 정보 선생님", page_icon="🤖")
 st.title("🤖 AI 정보 선생님")
-
+st.write("키 길이:", len(st.secrets.get("GEMINI_API_KEY", "")))
 # 비밀 금고(secrets)에서 API 키를 꺼내 접속 준비
 client = OpenAI(
     api_key=st.secrets["GEMINI_API_KEY"],
