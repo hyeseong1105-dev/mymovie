@@ -40,7 +40,7 @@ if user_input:
     with st.chat_message("assistant"):
         try:
             stream = client.chat.completions.create(
-                model="gemini-2.5-flash-lite",       # 모델 이름은 그대로 유지
+                model="gemini-3.5-flash-lite",       # 모델 이름은 그대로 유지
                 messages=st.session_state.messages,  # 대화 전체를 함께 보내 기억 유지
                 stream=True,                         # 글자가 실시간으로 흐르게
             )
@@ -50,5 +50,5 @@ if user_input:
             )
             # AI 답도 기록에 저장 (다음 질문에 이어서 사용)
             st.session_state.messages.append({"role": "assistant", "content": answer})
-        except Exception as e:
-            st.error(f"에러: {e}")
+        except Exception:
+            st.error("응답을 받지 못했습니다. 잠시 후 다시 보내 주세요.")
